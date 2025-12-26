@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Mini Project</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div id="app">
+    <div class="bg-white p-6 rounded-2xl shadow-xl w-80 text-center">
+      <h2 class="text-2xl font-bold text-gray-800 mb-2">User Profile</h2>
+      
+      <span :class="['px-3 py-1 rounded-full text-white text-sm',  profile.statusColor]">
+        {{ profile.statusText}}
+      </span>
+
+      <div class="mt-6">
+        <p class="text-gray-600">Total Likes</p>
+        <h3 class="text-4xl font-extrabold text-blue-500">{{ likes }}</h3>
+      </div>
+
+      <div class="mt-6 flex gap-2 justify-center">
+        <button @click="toggleStatus" class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg font-medium transition">
+          Ganti Status
+        </button>
+
+        <button @click="addLike" class="cursor-pointer px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition shadow-md">
+          Like ❤️
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createApp, ref, reactive } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+    createApp({
+      setup() {
+        // 3. Gunakan Ref untuk likes
+        const likes = ref(0)
+
+        // 4. Gunakan Reactive untuk profile (text status dan warna)
+        const profile = reactive({
+          statusText: 'Online',
+          statusColor: 'bg-green-500'
+        })
+
+        function addLike() {
+          // 5. Increment likes
+          likes.value++
+        }
+
+        function toggleStatus() {
+          // 6. Logika ganti status (Online <-> Offline)
+          if (profile.statusText === 'Online') {
+            profile.statusText = 'Offline'
+            profile.statusColor = 'bg-red-500'
+          } else {
+            profile.statusText = 'Online'
+            profile.statusColor = 'bg-green-500'
+          }
+        }
+
+        return { 
+          likes, 
+          profile, 
+          addLike, 
+          toggleStatus 
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>
