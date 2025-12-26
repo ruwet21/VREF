@@ -10,7 +10,7 @@ Project ini dibuat menggunakan teknik **Composition API** dengan metode **CDN** 
 
 ## Cara Menjalankan
 Karena ini menggunakan CDN, file bisa langsung dibuka di browser atau melalui link GitHub Pages:
-[Link ke Website Hasil Belajar](https://ruwet21.github.io/vref/)
+[Link ke Website Hasil Belajar](https://ruwet21.github.io/VREF/V-C-REF.html)
 
 ---
 *Dibuat untuk keperluan dokumentasi pribadi.*
